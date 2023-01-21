@@ -27,6 +27,7 @@ body {
   display: grid;
   place-items: center;
   color: var(--brand);
+  background-image: url("https://source.unsplash.com/f9tpxZEopMk");
   background-color: var(--surface-1);
   font-family: var(--font-sans);
   font-size: var(--font-size-fluid-3);
