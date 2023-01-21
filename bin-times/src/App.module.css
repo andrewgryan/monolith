@@ -11,13 +11,11 @@
 }
 
 html {
-  --brand-light: var(--orange-6);
+  --brand-light: var(--blue-6);
   --surface-1-light: var(--gray-2);
-  --brand-dark: var(--orange-3);
+  --brand-dark: var(--blue-3);
   --surface-1-dark: var(--gray-9);
 }
-
-
 
 body {
   margin: 0;
@@ -41,5 +39,7 @@ body {
 .containerH1 {
   margin: 0;
   padding: 0;
+  text-transform: uppercase;
+  line-height: var(--font-lineheight-1);
 }
 

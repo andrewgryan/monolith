@@ -4,7 +4,7 @@ function App() {
   return (
     <div class={ container }>
       <header class={ containerHeader }>
-        <h1 class={ containerH1 }>Bin collection times</h1>
+        <h1 class={ containerH1 }>Web design</h1>
       </header>
     </div>
   );
