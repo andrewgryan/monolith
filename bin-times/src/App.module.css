@@ -84,3 +84,16 @@ body {
   letter-spacing: var(--font-letterspacing-2);
   text-transform: uppercase;
 }
+
+.recipe {
+  background-color: var(--surface-2);
+  padding-inline: var(--size-fluid-4);
+  padding-block: var(--size-fluid-2);
+}
+
+.recipeList {
+  display: flex;
+  gap: var(--size-2);
+  overflow-x: scroll;
+  width: 100%;
+}
