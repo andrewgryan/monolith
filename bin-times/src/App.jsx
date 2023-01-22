@@ -3,6 +3,7 @@ import { container, containerBody, containerHeader, containerH1 } from "./App.mo
 import { nav, navItem } from "./App.module.css"
 import { newRecipe, recipeList, recipe } from "./App.module.css"
 import { page, row, primaryButton } from "./App.module.css"
+import { addRecipeForm, ingredient } from "./App.module.css"
 import { TbCarrot, TbFish } from 'solid-icons/tb'
 import { FaSolidBowlFood } from 'solid-icons/fa'
 
@@ -59,6 +60,20 @@ function Add() {
           <button class={ primaryButton }>Home</button>
         </A>
       </div>
+      <form class={ addRecipeForm }>
+        <fieldset class={ ingredient }>
+          <legend>Add an ingredient</legend>
+          <label for="label">Name:</label>
+          <input id="label" name="label" type="text" />
+          <label for="category">Category:</label>
+          <select id="category" name="category">
+            <option value="meat">Meat</option>
+            <option value="fish">Fish</option>
+            <option value="vegetable">Vegetable</option>
+          </select>
+        </fieldset>
+        <button class={ primaryButton } type="submit">Submit</button>
+      </form>
     </Page>
   )
 }
