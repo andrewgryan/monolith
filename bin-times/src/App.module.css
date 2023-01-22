@@ -63,11 +63,14 @@ body {
 
 .newRecipe {
   background-color: var(--surface-2);
-  padding-block: var(--size-fluid-1);
-  padding-inline: var(--size-fluid-2);
-  box-shadow: var(--shadow-2);
-  border-radius: var(--radius-1);
+  padding-block: var(--size-fluid-2);
+  padding-inline: var(--size-fluid-3);
+  box-shadow: var(--shadow-3);
+  border-radius: var(--radius-2);
   display: flex;
   gap: var(--size-2);
   align-items: center;
+  font-size: var(--font-size-fluid-2);
+  letter-spacing: var(--font-letterspacing-2);
+  text-transform: uppercase;
 }

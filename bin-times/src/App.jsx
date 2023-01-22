@@ -8,7 +8,10 @@ function Nav() {
 
 
 function NewRecipe() {
-  return <div class={ newRecipe }><TbCarrot /><div>Add recipe</div></div>
+  const onClick = () => {
+    alert("Recipe");
+  }
+  return <div class={ newRecipe } onclick={onClick}><TbCarrot /><div>Add recipe</div></div>
 }
 
 function App() {
