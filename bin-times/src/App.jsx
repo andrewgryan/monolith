@@ -1,6 +1,8 @@
+import { Routes, Route, A } from "@solidjs/router";
 import { container, containerBody, containerHeader, containerH1 } from "./App.module.css"
 import { nav, navItem } from "./App.module.css"
 import { newRecipe, recipeList, recipe } from "./App.module.css"
+import { page, row, primaryButton } from "./App.module.css"
 import { TbCarrot, TbFish } from 'solid-icons/tb'
 import { FaSolidBowlFood } from 'solid-icons/fa'
 
@@ -26,13 +28,10 @@ function RecipeList() {
 }
 
 function NewRecipe() {
-  const onClick = () => {
-    alert("Recipe");
-  }
-  return <div class={ newRecipe } onclick={onClick}><TbCarrot /><div>Add recipe</div></div>
+  return <A href="/add" class={ newRecipe }><TbCarrot /><div>Add recipe</div></A>
 }
 
-function App() {
+function Home() {
   return (
     <div class={ container }>
       <Nav />
@@ -44,6 +43,32 @@ function App() {
         <NewRecipe />
       </div>
     </div>
+  );
+}
+
+
+function Page(props) {
+  return <div class={ page }>{ props.children }</div>
+}
+
+function Add() {
+  return (
+    <Page>
+      <div class={ row }>
+        <A href="/" >
+          <button class={ primaryButton }>Home</button>
+        </A>
+      </div>
+    </Page>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" component={ Home } />
+      <Route path="/add" component={ Add } />
+    </Routes>
   );
 }
 
