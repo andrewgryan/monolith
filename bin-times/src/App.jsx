@@ -1,12 +1,14 @@
-import { container, containerBody, containerHeader, containerH1, nav } from "./App.module.css"
+import { container, containerBody, containerHeader, containerH1 } from "./App.module.css"
+import { nav, navItem } from "./App.module.css"
 import { newRecipe, recipeList, recipe } from "./App.module.css"
-import { TbCarrot } from 'solid-icons/tb'
+import { TbCarrot, TbFish } from 'solid-icons/tb'
+import { FaSolidBowlFood } from 'solid-icons/fa'
 
 function Nav() {
   return (
     <ul class={ nav }>
-      <li>Recipes</li>
-      <li>Ingredients</li>
+      <li class={ navItem }><FaSolidBowlFood /><div>Recipes</div></li>
+      <li class={ navItem }><TbFish /><span>Ingredients</span></li>
     </ul>
   );
 }

@@ -44,7 +44,6 @@ body {
   flex-grow: 1;
   display: grid;
   place-items: center;
-  padding-inline: var(--size-fluid-3);
 }
 
 .containerHeader {
@@ -61,13 +60,25 @@ body {
 }
 
 .nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--size-2);
+  font-size: var(--font-size-fluid-1);
   background-color: var(--surface-2);
   padding-block: var(--size-fluid-1);
   padding-inline: var(--size-fluid-2);
   box-shadow: var(--shadow-2);
   list-style-type: none;
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  gap: var(--size-2);
+  outline: 1px solid var(--brand);
+  padding-inline: var(--size-3);
+  padding-block: var(--size-1);
+  border-radius: var(--radius-1);
 }
 
 
@@ -96,4 +107,5 @@ body {
   gap: var(--size-2);
   overflow-x: scroll;
   width: 100%;
+  padding-inline: var(--size-2);
 }
