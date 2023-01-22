@@ -62,6 +62,25 @@ function Add() {
       </div>
       <form class={ addRecipeForm }>
         <fieldset class={ ingredient }>
+          <legend>Recipe</legend>
+          <label for="label">Name:</label>
+          <input id="label" name="label" type="text" />
+          <label for="tag">Tag(s):</label>
+          <select id="tag" name="tag">
+            <option value="vegetarian">Vegetarian</option>
+            <option value="pasta">Pasta</option>
+            <option value="meat">Meat</option>
+          </select>
+
+          <label for="ingredients">Ingredients:</label>
+          <ul>
+            <li>Carrot</li>
+            <li>Stock</li>
+            <li>Potato</li>
+          </ul>
+
+        </fieldset>
+        <fieldset class={ ingredient }>
           <legend>Add an ingredient</legend>
           <label for="label">Name:</label>
           <input id="label" name="label" type="text" />
@@ -77,6 +96,7 @@ function Add() {
     </Page>
   )
 }
+
 
 function App() {
   return (
