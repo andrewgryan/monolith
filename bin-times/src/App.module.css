@@ -1,5 +1,6 @@
 :root {
   --brand: var(--brand-light);
+  --text-1: var(--text-1-light);
   --surface-1: var(--surface-1-light);
   --surface-2: var(--surface-2-light);
 }
@@ -7,6 +8,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --brand: var(--brand-dark);
+    --text-1: var(--text-1-dark);
     --surface-1: var(--surface-1-dark);
     --surface-2: var(--surface-2-dark);
   }
@@ -14,9 +16,12 @@
 
 html {
   --brand-light: var(--blue-6);
+  --text-1-light: var(--gray-8);
   --surface-1-light: var(--gray-2);
   --surface-2-light: var(--gray-0);
+
   --brand-dark: var(--blue-3);
+  --text-1-dark: var(--gray-1);
   --surface-1-dark: var(--gray-9);
   --surface-2-dark: var(--gray-8);
 }
@@ -30,7 +35,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: var(--brand);
+  color: var(--text-1);
   background-color: var(--surface-1);
   font-family: var(--font-sans);
 }
@@ -49,17 +54,22 @@ body {
 .containerH1 {
   margin: 0;
   padding: 0;
+  color: var(--brand);
   text-transform: uppercase;
   font-size: var(--font-size-fluid-3);
   line-height: var(--font-lineheight-1);
 }
 
 .nav {
+  display: flex;
+  gap: var(--size-2);
   background-color: var(--surface-2);
   padding-block: var(--size-fluid-1);
   padding-inline: var(--size-fluid-2);
   box-shadow: var(--shadow-2);
+  list-style-type: none;
 }
+
 
 .newRecipe {
   background-color: var(--surface-2);

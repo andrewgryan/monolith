@@ -3,7 +3,12 @@ import { newRecipe } from "./App.module.css"
 import { TbCarrot } from 'solid-icons/tb'
 
 function Nav() {
-  return <div class={ nav }>Nav</div>
+  return (
+    <ul class={ nav }>
+      <li>Recipes</li>
+      <li>Ingredients</li>
+    </ul>
+  );
 }
 
 
@@ -20,7 +25,7 @@ function App() {
       <Nav />
       <div class={ containerBody }>
         <header class={ containerHeader }>
-          <h1 class={ containerH1 }>Recipe finder</h1>
+          <h1 class={ containerH1 }>Today's recipe</h1>
         </header>
         <NewRecipe />
       </div>
