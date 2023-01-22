@@ -1,20 +1,24 @@
 :root {
   --brand: var(--brand-light);
   --surface-1: var(--surface-1-light);
+  --surface-2: var(--surface-2-light);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --brand: var(--brand-dark);
     --surface-1: var(--surface-1-dark);
+    --surface-2: var(--surface-2-dark);
   }
 }
 
 html {
   --brand-light: var(--blue-6);
   --surface-1-light: var(--gray-2);
+  --surface-2-light: var(--gray-0);
   --brand-dark: var(--blue-3);
   --surface-1-dark: var(--gray-9);
+  --surface-2-dark: var(--gray-8);
 }
 
 body {
@@ -23,14 +27,19 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
   color: var(--brand);
-  background-image: url("https://source.unsplash.com/f9tpxZEopMk");
   background-color: var(--surface-1);
   font-family: var(--font-sans);
-  font-size: var(--font-size-fluid-3);
+}
+
+.containerBody {
+  flex-grow: 1;
+  display: grid;
+  place-items: center;
+  padding-inline: var(--size-fluid-3);
 }
 
 .containerHeader {
@@ -41,6 +50,24 @@ body {
   margin: 0;
   padding: 0;
   text-transform: uppercase;
+  font-size: var(--font-size-fluid-3);
   line-height: var(--font-lineheight-1);
 }
 
+.nav {
+  background-color: var(--surface-2);
+  padding-block: var(--size-fluid-1);
+  padding-inline: var(--size-fluid-2);
+  box-shadow: var(--shadow-2);
+}
+
+.newRecipe {
+  background-color: var(--surface-2);
+  padding-block: var(--size-fluid-1);
+  padding-inline: var(--size-fluid-2);
+  box-shadow: var(--shadow-2);
+  border-radius: var(--radius-1);
+  display: flex;
+  gap: var(--size-2);
+  align-items: center;
+}
