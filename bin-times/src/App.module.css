@@ -81,7 +81,6 @@ body {
   border-radius: var(--radius-1);
 }
 
-
 .newRecipe {
   background-color: var(--surface-2);
   padding-block: var(--size-fluid-2);
