@@ -7,12 +7,9 @@ import {
 } from "./App.module.css";
 import { nav, navItem } from "./App.module.css";
 import { newRecipe, recipeList, recipe } from "./App.module.css";
-import { page, row, primaryButton } from "./App.module.css";
-import { addRecipeForm, ingredient } from "./App.module.css";
 import { TbCarrot, TbFish } from "solid-icons/tb";
 import { FaSolidBowlFood } from "solid-icons/fa";
-import { For } from "solid-js";
-import { createStore } from "solid-js/store";
+import Add from "./AddRecipe";
 
 function Nav() {
   return (
@@ -62,72 +59,6 @@ function Home() {
         <NewRecipe />
       </div>
     </div>
-  );
-}
-
-function Page(props) {
-  return <div class={page}>{props.children}</div>;
-}
-
-function Add() {
-  const [store, setStore] = createStore({
-    tags: ["Vegetarian", "Meat", "Pasta"],
-    recipe: {
-      name: "Soup",
-      ingredients: ["Carrot", "Potato", "Stock cube"],
-    },
-  });
-  return (
-    <Page>
-      <div class={row}>
-        <A href="/">
-          <button class={primaryButton}>Home</button>
-        </A>
-      </div>
-      <form class={addRecipeForm}>
-        <fieldset class={ingredient}>
-          <legend>Recipe</legend>
-          <label for="label">Name:</label>
-          <input
-            id="label"
-            name="label"
-            type="text"
-            value={store.recipe.name}
-          />
-          <label for="tag">Tag(s):</label>
-          <select id="tag" name="tag">
-            <For each={store.tags}>
-              {(item) => {
-                return <option value={item}>{item}</option>;
-              }}
-            </For>
-          </select>
-
-          <label for="ingredients">Ingredients:</label>
-          <ul>
-            <For each={store.recipe.ingredients}>
-              {(ingredient) => {
-                return <li>{ingredient}</li>;
-              }}
-            </For>
-          </ul>
-        </fieldset>
-        <fieldset class={ingredient}>
-          <legend>Add an ingredient</legend>
-          <label for="label">Name:</label>
-          <input id="label" name="label" type="text" />
-          <label for="category">Category:</label>
-          <select id="category" name="category">
-            <option value="meat">Meat</option>
-            <option value="fish">Fish</option>
-            <option value="vegetable">Vegetable</option>
-          </select>
-        </fieldset>
-        <button class={primaryButton} type="submit">
-          Submit
-        </button>
-      </form>
-    </Page>
   );
 }
 
