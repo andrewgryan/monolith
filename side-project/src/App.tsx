@@ -1,4 +1,4 @@
-import { createResource, createSignal, createEffect } from "solid-js";
+import { createEffect } from "solid-js";
 import { createStore } from "solid-js/store";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "../types/supabase";
@@ -65,12 +65,14 @@ function App() {
                   ? "uppercase font-semibold tracking-wide bg-pink-300 text-pink-100 py-2"
                   : "uppercase font-semibold tracking-wide bg-pink-500 text-pink-100 py-2"
               }
-              onclick={() =>
-                console.log({
-                  name: store.name,
-                  description: store.description,
-                })
-              }
+              onclick={async () => {
+                const { data, error } = await supabase
+                  .from("ingredients")
+                  .insert([
+                    { name: store.name, description: store.description },
+                  ]);
+                console.log({ data, error });
+              }}
             >
               Add
             </button>
