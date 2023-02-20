@@ -25,13 +25,28 @@ function App() {
 
   return (
     <main class="grid place-items-center text-gray-800 bg-gradient-to-b from-indigo-400 via-purple-400 to-pink-400 min-h-screen">
-      <header>
-        <h1 class="text-3xl font-bold underline">Solid JS!</h1>
+      <header class="flex flex-col space-y-2">
+        <h1 class="text-3xl font-bold">Recipe</h1>
         <Show when={!countries.loading} fallback={<div>...</div>}>
           <ul>
             <For each={countries()}>{(country) => <li>{country.name}</li>}</For>
           </ul>
         </Show>
+        <form>
+          <div class="flex flex-col space-y-1">
+            <label
+              for="ingredient"
+              class="uppercase tracking-wide font-semibold"
+            >
+              Ingredient
+            </label>
+            <input
+              id="ingredient"
+              class="appearence-none bg-gray-200 text-gray-700 focus:bg-white py-2 px-4 leading-tight"
+              type="text"
+            />
+          </div>
+        </form>
       </header>
     </main>
   );
