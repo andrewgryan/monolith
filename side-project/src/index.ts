@@ -1,5 +1,17 @@
 import "./index.css";
+import { createClient } from "@supabase/supabase-js";
 
+// Supabase client
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+supabase
+  .from("countries")
+  .select()
+  .then(({ data }) => console.log(data));
+
+// Geometry
 interface Point {
   x: number;
   y: number;
