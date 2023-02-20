@@ -24,7 +24,7 @@ function App() {
   const [countries] = createResource<Country[]>(fetchCountries);
 
   return (
-    <main class="grid place-items-center text-gray-800 bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 min-h-screen">
+    <main class="grid place-items-center text-gray-800 bg-gradient-to-b from-indigo-400 via-purple-400 to-pink-400 min-h-screen">
       <header>
         <h1 class="text-3xl font-bold underline">Solid JS!</h1>
         <Show when={!countries.loading} fallback={<div>...</div>}>
