@@ -1,3 +1,5 @@
+import "./index.css";
+
 interface Point {
   x: number;
   y: number;
