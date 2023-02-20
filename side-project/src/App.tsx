@@ -1,7 +1,7 @@
 import { createEffect } from "solid-js";
-import { createStore } from "solid-js/store";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "../types/supabase";
+import { useStore } from "./store";
 
 // Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -9,12 +9,15 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
 function App() {
-  const [store, setStore] = createStore({ name: "", description: "" });
+  return <AddIngredient />;
+}
+
+const AddIngredient = () => {
+  const [store, setStore] = useStore();
 
   createEffect(() => {
     console.log(store.name, store.description);
   });
-
   return (
     <main class="grid place-items-center text-indigo-900 bg-gradient-to-b from-purple-500 via-purple-400 to-purple-500 min-h-screen">
       <header class="flex flex-col space-y-8">
@@ -69,7 +72,10 @@ function App() {
                 const { data, error } = await supabase
                   .from("ingredients")
                   .insert([
-                    { name: store.name, description: store.description },
+                    {
+                      name: store.name,
+                      description: store.description,
+                    },
                   ]);
                 console.log({ data, error });
               }}
@@ -81,6 +87,6 @@ function App() {
       </header>
     </main>
   );
-}
+};
 
 export default App;
