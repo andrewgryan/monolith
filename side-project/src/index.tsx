@@ -1,5 +1,7 @@
 import "./index.css";
 import { createClient } from "@supabase/supabase-js";
+import { render } from "solid-js/web";
+import Vanilla from "./App";
 
 // Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -11,21 +13,8 @@ supabase
   .select()
   .then(({ data }) => console.log(data));
 
-// Geometry
-interface Point {
-  x: number;
-  y: number;
-}
-
-const add = (p: Point): number => {
-  return p.x + p.y;
-};
-
-export default function HelloWorld(): number {
-  return add({ x: 1, y: 1 });
-}
-
+// Solid app
 let el = document.getElementById("app");
 if (el != null) {
-  el.appendChild(document.createTextNode("VanillaJS"));
+  render(() => <Vanilla />, el);
 }
