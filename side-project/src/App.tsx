@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { Database } from "../types/supabase";
 import { useStore } from "./store";
 import { Routes, Route } from "@solidjs/router";
+import { BiRegularFork } from "solid-icons/bi";
 
 // Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -37,11 +38,19 @@ const Index = () => {
           <span class="uppercase font-thin tracking-wide">eat</span>
         </h1>
       </header>
-      <div class="fixed bottom-0 right-0 m-6 cursor-pointer rounded-full shadow-lg shadow-indigo-600/50 h-14 w-14 bg-gradient-to-t from-indigo-600 to-indigo-700 grid place-items-center">
-        <div class="relative rounded-full h-1 w-1">
-          <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded rotate-90" />
-          <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded" />
-        </div>
+      <div class="fixed bottom-0 right-0 m-6 cursor-pointer rounded-full bg-gradient-to-r from-indigo-300 to-indigo-400 shadow-lg shadow-indigo-500/50 p-4 grid place-items-center">
+        <BiRegularFork class="w-12 h-12" />
+      </div>
+    </div>
+  );
+};
+
+const Plus = () => {
+  return (
+    <div class="fixed bottom-0 right-0 m-6 cursor-pointer rounded-full shadow-lg shadow-indigo-600/50 h-14 w-14 bg-gradient-to-t from-indigo-600 to-indigo-700 grid place-items-center">
+      <div class="relative rounded-full h-1 w-1">
+        <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded rotate-90" />
+        <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded" />
       </div>
     </div>
   );

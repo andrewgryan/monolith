@@ -8,6 +8,7 @@ specifiers:
   autoprefixer: ^10.4.13
   babel-preset-solid: ^1.6.10
   postcss: ^8.4.21
+  solid-icons: ^1.0.4
   solid-js: ^1.6.11
   supabase: ^1.38.6
   tailwindcss: ^3.2.7
@@ -18,6 +19,7 @@ specifiers:
 dependencies:
   '@solidjs/router': 0.7.0_solid-js@1.6.11
   '@supabase/supabase-js': 2.8.0
+  solid-icons: 1.0.4_solid-js@1.6.11
   solid-js: 1.6.11
   typescript: 4.9.5
   vite: 4.1.2
@@ -1429,6 +1431,15 @@ packages:
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
+
+  /solid-icons/1.0.4_solid-js@1.6.11:
+    resolution: {integrity: sha512-gJTp4in3+OYCs9WvDkSLt4Los2unR3Uoder8wjh15GsfP20xiNOLfPTJllXmn+fI8+k3x7bRYtLGIgWd9fUQug==}
+    engines: {node: '>= 16'}
+    peerDependencies:
+      solid-js: '*'
+    dependencies:
+      solid-js: 1.6.11
+    dev: false
 
   /solid-js/1.6.11:
     resolution: {integrity: sha512-JquQQHPArGq+i2PLURxJ99Pcz2/1docpbycSio/cKSA0SeI3z5zRjy0TNcH4NRYvbOLrcini+iovXwnexKabyw==}
