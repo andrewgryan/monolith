@@ -19,7 +19,11 @@ function App() {
 }
 
 const Index = () => {
-  return <div class="bg-gray-900 text-gray-100 min-h-screen">Index</div>;
+  return (
+    <div class="bg-blue-100 text-gray-100 h-screen">
+      <div class="h-1/2 bg-blue-200 -skew-y-6 translate-y-12"></div>
+    </div>
+  );
 };
 
 const AddIngredient = () => {
