@@ -1,20 +1,16 @@
 import { createEffect } from "solid-js";
-import { createClient } from "@supabase/supabase-js";
-import { Database } from "../types/supabase";
 import { useStore } from "./store";
+import { useSupabase } from "./supabase";
 import { Routes, Route, A, useNavigate } from "@solidjs/router";
 import { ImSpoonKnife } from "solid-icons/im";
-
-// Supabase client
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
-const supabase = createClient<Database>(supabaseUrl, supabaseKey);
+import Ingredient from "./Ingredient";
 
 function App() {
   return (
     <Routes>
       <Route path="/" component={Index} />
       <Route path="/add" component={AddIngredient} />
+      <Route path="/ingredient" component={Ingredient} />
     </Routes>
   );
 }
@@ -56,6 +52,7 @@ const Index = () => {
 const AddIngredient = () => {
   const [store, setStore] = useStore();
   const navigate = useNavigate();
+  const supabase = useSupabase();
 
   createEffect(() => {
     console.log(store.name, store.description);
