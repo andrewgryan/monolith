@@ -53,17 +53,6 @@ const Index = () => {
   );
 };
 
-const Plus = () => {
-  return (
-    <div class="fixed bottom-0 right-0 m-6 cursor-pointer rounded-full shadow-lg shadow-indigo-600/50 h-14 w-14 bg-gradient-to-t from-indigo-600 to-indigo-700 grid place-items-center">
-      <div class="relative rounded-full h-1 w-1">
-        <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded rotate-90" />
-        <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded" />
-      </div>
-    </div>
-  );
-};
-
 const AddIngredient = () => {
   const [store, setStore] = useStore();
   const navigate = useNavigate();
@@ -72,73 +61,73 @@ const AddIngredient = () => {
     console.log(store.name, store.description);
   });
   return (
-    <main class="grid place-items-center text-indigo-900 bg-gradient-to-b from-indigo-500 via-indigo-400 to-indigo-500 min-h-screen">
-      <header class="flex flex-col space-y-8">
-        <h1 class="text-3xl font-bold uppercase tracking-wide">
+    <main class="min-h-screen bg-cover bg-center bg-[url('https://source.unsplash.com/WhcNJfhGiOk')] flex flex-col justify-around">
+      <header class="flex flex-col space-y-8 px-4">
+        <h1 class="text-5xl font-bold uppercase tracking-wide">
           Add an ingredient
         </h1>
-        <form class="text-indigo-900 flex flex-col space-y-3">
-          <div class="flex flex-col space-y-1">
-            <label
-              for="ingredient"
-              class="uppercase tracking-wide font-semibold"
-            >
-              Ingredient name
-            </label>
-            <input
-              id="ingredient"
-              oninput={(ev) => setStore("name", ev.currentTarget.value)}
-              class="appearence-none bg-indigo-200 focus:outline-indigo-700 text-indigo-700 focus:bg-white py-2 px-4 leading-tight"
-              type="text"
-            />
-          </div>
-          <div class="flex flex-col space-y-1">
-            <label
-              for="ingredient-description"
-              class="uppercase tracking-wide font-semibold"
-            >
-              Description
-            </label>
-            <input
-              id="ingredient-description"
-              oninput={(ev) => setStore("description", ev.currentTarget.value)}
-              class="appearence-none bg-indigo-200 focus:outline-indigo-700 text-indigo-700 focus:bg-white py-2 px-4 leading-tight"
-              type="text"
-            />
-          </div>
-          <div class="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              class="uppercase tracking-wide text-indigo-600 bg-white py-2"
-              onclick={() => navigate("/")}
-            >
-              Cancel
-            </button>
-            <button
-              type="button"
-              disabled={store.name === ""}
-              class={
-                store.name === ""
-                  ? "uppercase font-semibold tracking-wide bg-pink-300 text-pink-100 py-2"
-                  : "uppercase font-semibold tracking-wide bg-pink-500 text-pink-100 py-2"
-              }
-              onclick={async () => {
-                const { data, error } = await supabase
-                  .from("ingredients")
-                  .insert([
-                    {
-                      name: store.name,
-                      description: store.description,
-                    },
-                  ]);
-                console.log({ data, error });
-              }}
-            >
-              Add
-            </button>
-          </div>
-        </form>
       </header>
+      <form class="flex flex-col space-y-3 mx-4 bg-gray-100/75 rounded p-2">
+        <div class="flex flex-col space-y-1">
+          <label
+            for="ingredient"
+            class="uppercase tracking-wide font-semibold py-1"
+          >
+            Ingredient name
+          </label>
+          <input
+            id="ingredient"
+            oninput={(ev) => setStore("name", ev.currentTarget.value)}
+            class="appearence-none bg-gray-200 focus:outline-gray-700 text-gray-700 focus:bg-white py-2 px-4 leading-tight"
+            type="text"
+          />
+        </div>
+        <div class="flex flex-col space-y-1">
+          <label
+            for="ingredient-description"
+            class="uppercase tracking-wide font-semibold"
+          >
+            Short description
+          </label>
+          <input
+            id="ingredient-description"
+            oninput={(ev) => setStore("description", ev.currentTarget.value)}
+            class="appearence-none bg-gray-200 focus:outline-gray-700 text-gray-700 focus:bg-white py-2 px-4 leading-tight"
+            type="text"
+          />
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            class="uppercase tracking-wide text-indigo-600 bg-white py-2"
+            onclick={() => navigate("/")}
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            disabled={store.name === ""}
+            class={
+              store.name === ""
+                ? "uppercase font-semibold tracking-wide bg-pink-300 text-pink-100 py-2"
+                : "uppercase font-semibold tracking-wide bg-pink-500 text-pink-100 py-2"
+            }
+            onclick={async () => {
+              const { data, error } = await supabase
+                .from("ingredients")
+                .insert([
+                  {
+                    name: store.name,
+                    description: store.description,
+                  },
+                ]);
+              console.log({ data, error });
+            }}
+          >
+            Add
+          </button>
+        </div>
+      </form>
     </main>
   );
 };
