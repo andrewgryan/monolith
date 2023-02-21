@@ -26,7 +26,7 @@ export default function Ingredient() {
   const [ingredients] = createResource<Ingredient[]>(getIngredients);
 
   return (
-    <div class="min-h-screen bg-gradient-to-b from-green-50 to-green-100">
+    <div class="min-h-screen bg-cover bg-center bg-[url('https://source.unsplash.com/0ZGzu8J69kY')]">
       <Show when={!ingredients.loading} fallback={<div>Loading...</div>}>
         <For each={ingredients()}>
           {(ingredient) => <div>{ingredient.name}</div>}
