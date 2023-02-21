@@ -62,7 +62,7 @@ const AddIngredient = () => {
   });
   return (
     <main class="min-h-screen bg-cover bg-center bg-[url('https://source.unsplash.com/WhcNJfhGiOk')] flex flex-col justify-around">
-      <header class="flex flex-col space-y-8 px-4">
+      <header class="flex flex-col space-y-8 px-4 py-8 bg-gradient-to-b from-transparent via-gray-300 to-transparent">
         <h1 class="text-5xl font-bold uppercase tracking-wide">
           Add an ingredient
         </h1>
