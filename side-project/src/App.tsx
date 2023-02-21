@@ -2,7 +2,7 @@ import { createEffect } from "solid-js";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "../types/supabase";
 import { useStore } from "./store";
-import { Routes, Route } from "@solidjs/router";
+import { Routes, Route, A, useNavigate } from "@solidjs/router";
 import { BiRegularFork } from "solid-icons/bi";
 
 // Supabase client
@@ -38,9 +38,11 @@ const Index = () => {
           <span class="uppercase font-thin tracking-wide">eat</span>
         </h1>
       </header>
-      <div class="fixed bottom-0 right-0 m-6 cursor-pointer rounded-full bg-gradient-to-r from-indigo-300 to-indigo-400 shadow-lg shadow-indigo-500/50 p-4 grid place-items-center">
-        <BiRegularFork class="w-12 h-12" />
-      </div>
+      <A href="/add">
+        <div class="fixed bottom-0 right-0 m-6 cursor-pointer rounded-full bg-gradient-to-r from-indigo-300 to-indigo-400 shadow-lg shadow-indigo-500/50 p-4 grid place-items-center">
+          <BiRegularFork class="w-12 h-12" />
+        </div>
+      </A>
     </div>
   );
 };
@@ -58,6 +60,7 @@ const Plus = () => {
 
 const AddIngredient = () => {
   const [store, setStore] = useStore();
+  const navigate = useNavigate();
 
   createEffect(() => {
     console.log(store.name, store.description);
@@ -101,6 +104,7 @@ const AddIngredient = () => {
             <button
               type="button"
               class="uppercase tracking-wide text-indigo-600 bg-white py-2"
+              onclick={() => navigate("/")}
             >
               Cancel
             </button>
