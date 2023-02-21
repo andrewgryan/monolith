@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { Database } from "../types/supabase";
 import { useStore } from "./store";
 import { Routes, Route, A, useNavigate } from "@solidjs/router";
-import { BiRegularFork } from "solid-icons/bi";
+import { ImSpoonKnife } from "solid-icons/im";
 
 // Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -40,11 +40,13 @@ const Index = () => {
       </header>
       <A href="/add">
         <div class="fixed bottom-0 right-0 m-4 cursor-pointer flex flex-col gap-1 items-center">
-          <BiRegularFork
-            class="w-16 h-16 p-2 rounded-xl bg-gradient-to-r from-green-500 to-green-600 shadow-lg shadow-green-500/50"
+          <ImSpoonKnife
+            class="w-16 h-16 p-3 rounded-xl bg-gradient-to-r from-green-500 to-green-600 shadow-lg shadow-green-500/50"
             color={"hsl(221deg 39% 11%)"}
           />
-          <span class="text-sm uppercase tracking-wide">Begin</span>
+          <span class="text-sm text-green-500 uppercase tracking-wide">
+            Cook
+          </span>
         </div>
       </A>
     </div>
