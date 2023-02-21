@@ -4,6 +4,7 @@ import { useSupabase } from "./supabase";
 import { Routes, Route, A, useNavigate } from "@solidjs/router";
 import { ImSpoonKnife } from "solid-icons/im";
 import Ingredient from "./Ingredient";
+import ResetPassword from "./ResetPassword";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
@@ -15,6 +16,7 @@ function App() {
       <Route path="/ingredient" component={Ingredient} />
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
+      <Route path="/reset" component={ResetPassword} />
     </Routes>
   );
 }
@@ -24,12 +26,14 @@ const Index = () => {
     <div class="bg-gray-50 h-screen">
       <div class="h-2/3 bg-gray-100 bg-[url('https://source.unsplash.com/wtevVfGYwnM')]">
         <div class="flex flex-row justify-end pt-4 pr-4 items-center">
-          <button
-            type="button"
-            class="bg-gradient-to-r from-indigo-200 to-indigo-100 border-indigo-600 text-indigo-700 text-sm px-4 py-1 rounded-full uppercase tracking-wide shadow shadow-indigo-600/50"
-          >
-            Sign up
-          </button>
+          <A href="/signup">
+            <button
+              type="button"
+              class="bg-gradient-to-r from-indigo-200 to-indigo-100 border-indigo-600 text-indigo-700 text-sm px-4 py-1 rounded-full uppercase tracking-wide shadow shadow-indigo-600/50"
+            >
+              Sign up
+            </button>
+          </A>
         </div>
       </div>
       <header>
