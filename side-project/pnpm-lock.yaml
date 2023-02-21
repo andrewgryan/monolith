@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/core': ^7.20.12
+  '@solidjs/router': ^0.7.0
   '@supabase/supabase-js': ^2.8.0
   '@tailwindcss/forms': ^0.5.3
   autoprefixer: ^10.4.13
@@ -15,6 +16,7 @@ specifiers:
   vite-plugin-solid: ^2.5.0
 
 dependencies:
+  '@solidjs/router': 0.7.0_solid-js@1.6.11
   '@supabase/supabase-js': 2.8.0
   solid-js: 1.6.11
   typescript: 4.9.5
@@ -582,6 +584,14 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
+
+  /@solidjs/router/0.7.0_solid-js@1.6.11:
+    resolution: {integrity: sha512-8HI84twe5FjYRebSLMAhtkL9bRuTDIlxJK56kjfjU9WKGoUCTaWpCnkuj8Hqde1bWZ0X+GOZxKDfNkn1CjtjxA==}
+    peerDependencies:
+      solid-js: ^1.5.3
+    dependencies:
+      solid-js: 1.6.11
+    dev: false
 
   /@supabase/functions-js/2.0.0:
     resolution: {integrity: sha512-ozb7bds2yvf5k7NM2ZzUkxvsx4S4i2eRKFSJetdTADV91T65g4gCzEs9L3LUXSrghcGIkUaon03VPzOrFredqg==}

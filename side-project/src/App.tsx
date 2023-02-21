@@ -2,6 +2,7 @@ import { createEffect } from "solid-js";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "../types/supabase";
 import { useStore } from "./store";
+import { Routes, Route } from "@solidjs/router";
 
 // Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -9,8 +10,17 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
 function App() {
-  return <AddIngredient />;
+  return (
+    <Routes>
+      <Route path="/" component={Index} />
+      <Route path="/add" component={AddIngredient} />
+    </Routes>
+  );
 }
+
+const Index = () => {
+  return <div class="bg-gray-900 text-gray-100 min-h-screen">Index</div>;
+};
 
 const AddIngredient = () => {
   const [store, setStore] = useStore();

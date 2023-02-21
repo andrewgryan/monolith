@@ -1,5 +1,6 @@
 import "./index.css";
 import { render } from "solid-js/web";
+import { Router } from "@solidjs/router";
 import App from "./App";
 import { Store } from "./store";
 
@@ -9,7 +10,9 @@ if (el != null) {
   render(
     () => (
       <Store>
-        <App />
+        <Router>
+          <App />
+        </Router>
       </Store>
     ),
     el

@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@solidjs/router": "^0.7.0",
     "@supabase/supabase-js": "^2.8.0",
     "solid-js": "^1.6.11",
     "typescript": "^4.9.5",
