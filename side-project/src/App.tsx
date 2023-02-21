@@ -39,8 +39,12 @@ const Index = () => {
         </h1>
       </header>
       <A href="/add">
-        <div class="fixed bottom-0 right-0 m-6 cursor-pointer rounded-full bg-gradient-to-r from-indigo-300 to-indigo-400 shadow-lg shadow-indigo-500/50 p-4 grid place-items-center">
-          <BiRegularFork class="w-12 h-12" />
+        <div class="fixed bottom-0 right-0 m-4 cursor-pointer flex flex-col gap-1 items-center">
+          <BiRegularFork
+            class="w-16 h-16 p-2 rounded-xl bg-gradient-to-r from-green-500 to-green-600 shadow-lg shadow-green-500/50"
+            color={"hsl(221deg 39% 11%)"}
+          />
+          <span class="text-sm uppercase tracking-wide">Begin</span>
         </div>
       </A>
     </div>
