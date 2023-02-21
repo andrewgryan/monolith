@@ -20,21 +20,27 @@ function App() {
 
 const Index = () => {
   return (
-    <div class="bg-gray-50 text-gray-100 h-screen">
-      <div class="h-2/3 bg-gray-100">
+    <div class="bg-gray-50 h-screen">
+      <div class="h-2/3 bg-gray-100 bg-[url('https://source.unsplash.com/wtevVfGYwnM')]">
         <div class="flex flex-row justify-end pt-4 pr-4 items-center">
           <button
             type="button"
-            class="bg-gradient-to-r from-teal-200 to-teal-100 border-teal-600 text-teal-700 text-sm px-4 py-1 rounded-full uppercase tracking-wide shadow shadow-teal-600/50"
+            class="bg-gradient-to-r from-indigo-200 to-indigo-100 border-indigo-600 text-indigo-700 text-sm px-4 py-1 rounded-full uppercase tracking-wide shadow shadow-indigo-600/50"
           >
             Sign up
           </button>
         </div>
       </div>
-      <div class="absolute bottom-0 right-0 m-6 cursor-pointer rounded-full shadow-lg shadow-teal-600/50 h-14 w-14 bg-gradient-to-t from-teal-600 to-teal-700 grid place-items-center">
+      <header>
+        <h1 class="text-8xl text-gray-900 p-2">
+          <span class="text-9xl">Let's</span>{" "}
+          <span class="uppercase font-thin tracking-wide">eat</span>
+        </h1>
+      </header>
+      <div class="absolute bottom-0 right-0 m-6 cursor-pointer rounded-full shadow-lg shadow-indigo-600/50 h-14 w-14 bg-gradient-to-t from-indigo-600 to-indigo-700 grid place-items-center">
         <div class="relative rounded-full h-1 w-1">
-          <div class="absolute -translate-x-2.5 h-1 w-6 bg-teal-100 rounded rotate-90" />
-          <div class="absolute -translate-x-2.5 h-1 w-6 bg-teal-100 rounded" />
+          <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded rotate-90" />
+          <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded" />
         </div>
       </div>
     </div>
@@ -48,7 +54,7 @@ const AddIngredient = () => {
     console.log(store.name, store.description);
   });
   return (
-    <main class="grid place-items-center text-indigo-900 bg-gradient-to-b from-purple-500 via-purple-400 to-purple-500 min-h-screen">
+    <main class="grid place-items-center text-indigo-900 bg-gradient-to-b from-indigo-500 via-indigo-400 to-indigo-500 min-h-screen">
       <header class="flex flex-col space-y-8">
         <h1 class="text-3xl font-bold uppercase tracking-wide">
           Add an ingredient
@@ -64,7 +70,7 @@ const AddIngredient = () => {
             <input
               id="ingredient"
               oninput={(ev) => setStore("name", ev.currentTarget.value)}
-              class="appearence-none bg-purple-200 focus:outline-purple-700 text-purple-700 focus:bg-white py-2 px-4 leading-tight"
+              class="appearence-none bg-indigo-200 focus:outline-indigo-700 text-indigo-700 focus:bg-white py-2 px-4 leading-tight"
               type="text"
             />
           </div>
@@ -78,7 +84,7 @@ const AddIngredient = () => {
             <input
               id="ingredient-description"
               oninput={(ev) => setStore("description", ev.currentTarget.value)}
-              class="appearence-none bg-purple-200 focus:outline-purple-700 text-purple-700 focus:bg-white py-2 px-4 leading-tight"
+              class="appearence-none bg-indigo-200 focus:outline-indigo-700 text-indigo-700 focus:bg-white py-2 px-4 leading-tight"
               type="text"
             />
           </div>
