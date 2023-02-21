@@ -37,7 +37,7 @@ const Index = () => {
           <span class="uppercase font-thin tracking-wide">eat</span>
         </h1>
       </header>
-      <div class="absolute bottom-0 right-0 m-6 cursor-pointer rounded-full shadow-lg shadow-indigo-600/50 h-14 w-14 bg-gradient-to-t from-indigo-600 to-indigo-700 grid place-items-center">
+      <div class="fixed bottom-0 right-0 m-6 cursor-pointer rounded-full shadow-lg shadow-indigo-600/50 h-14 w-14 bg-gradient-to-t from-indigo-600 to-indigo-700 grid place-items-center">
         <div class="relative rounded-full h-1 w-1">
           <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded rotate-90" />
           <div class="absolute -translate-x-2.5 h-1 w-6 bg-indigo-100 rounded" />
