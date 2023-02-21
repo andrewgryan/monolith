@@ -40,13 +40,13 @@ const Index = () => {
       </header>
       <A href="/add">
         <div class="fixed bottom-0 right-0 m-4 cursor-pointer flex flex-col gap-1 items-center">
+          <span class="text-sm text-green-500 uppercase tracking-wide">
+            Recipes
+          </span>
           <ImSpoonKnife
             class="w-16 h-16 p-3 rounded-xl bg-gradient-to-r from-green-500 to-green-600 shadow-lg shadow-green-500/50"
-            color={"hsl(221deg 39% 11%)"}
+            color={"hsl(210deg 20% 98%)"}
           />
-          <span class="text-sm text-green-500 uppercase tracking-wide">
-            Cook
-          </span>
         </div>
       </A>
     </div>
