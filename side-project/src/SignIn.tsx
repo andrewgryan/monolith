@@ -1,6 +1,7 @@
 import { useSupabase } from "./supabase";
 import { createSignal, Show } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
+import LoginWithGoogle from "./LoginWithGoogle";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ export default function SignIn() {
         <h2 class="text-2xl uppercase text-pink-500 text-center">
           Sign in to see recipes
         </h2>
+        <LoginWithGoogle />
         <div class="flex flex-col">
           <label for="email" class="uppercase trcking-wide">
             Email
