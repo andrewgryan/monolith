@@ -57,18 +57,19 @@ const ButtonSignInOut = () => {
 
 const Index = () => {
   return (
-    <div class="bg-gray-50 h-screen">
-      <div class="h-2/3 bg-gray-100 bg-[url('https://source.unsplash.com/wtevVfGYwnM')]">
-        <div class="flex flex-row justify-end pt-4 pr-4 items-center">
+    <>
+      <div class="bg-gray-50 h-screen md:grid md:grid-cols-2">
+        <div class="absolute top-0 left-0 right-0 flex flex-row justify-end pt-4 pr-4 items-center">
           <ButtonSignInOut />
         </div>
+        <div class="h-2/3 md:h-full bg-gray-100 bg-[url('https://source.unsplash.com/wtevVfGYwnM')]"></div>
+        <header class="md:grid md:place-items-center">
+          <h1 class="text-8xl text-gray-900 p-2">
+            <span class="text-9xl">Let's</span>{" "}
+            <span class="uppercase font-thin tracking-wide">eat</span>
+          </h1>
+        </header>
       </div>
-      <header>
-        <h1 class="text-8xl text-gray-900 p-2">
-          <span class="text-9xl">Let's</span>{" "}
-          <span class="uppercase font-thin tracking-wide">eat</span>
-        </h1>
-      </header>
       <A href="/add">
         <div class="fixed bottom-0 right-0 m-4 cursor-pointer flex flex-col gap-1 items-center">
           <span class="text-sm text-green-500 uppercase tracking-wide">
@@ -80,7 +81,7 @@ const Index = () => {
           />
         </div>
       </A>
-    </div>
+    </>
   );
 };
 
