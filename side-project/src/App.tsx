@@ -1,12 +1,9 @@
-import { createEffect, onMount } from "solid-js";
+import { createEffect, createSignal, Match, Switch } from "solid-js";
 import { useStore } from "./store";
 import { useSupabase } from "./supabase";
 import { Routes, Route, A, useNavigate } from "@solidjs/router";
 import { ImSpoonKnife } from "solid-icons/im";
 import Ingredient from "./Ingredient";
-import ResetPassword from "./ResetPassword";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
 
 function App() {
   return (
@@ -20,27 +17,41 @@ function App() {
 
 const ButtonSignInOut = () => {
   const supabase = useSupabase();
-
-  onMount(async () => {
-    console.log(await supabase.auth.getUser());
-  });
+  const [authState, setAuthState] = createSignal("SIGNED_OUT");
 
   supabase.auth.onAuthStateChange((ev, session) => {
     console.log({ ev, session });
+    setAuthState(ev);
   });
 
   const onSignOut = async () => {
     console.log(await supabase.auth.signOut());
   };
+  const onSignIn = async () => {
+    console.log(await supabase.auth.signInWithOAuth({ provider: "google" }));
+  };
 
   return (
-    <button
-      onclick={onSignOut}
-      type="button"
-      class="bg-gradient-to-r from-indigo-200 to-indigo-100 border-indigo-600 text-indigo-700 text-sm px-4 py-1 rounded-full uppercase tracking-wide shadow shadow-indigo-600/50"
-    >
-      Sign out
-    </button>
+    <Switch>
+      <Match when={authState() === "SIGNED_IN"}>
+        <button
+          onclick={onSignOut}
+          type="button"
+          class="bg-gradient-to-r from-indigo-200 to-indigo-100 border-indigo-600 text-indigo-700 text-sm px-4 py-1 rounded-full uppercase tracking-wide shadow shadow-indigo-600/50"
+        >
+          Sign out
+        </button>
+      </Match>
+      <Match when={authState() === "SIGNED_OUT"}>
+        <button
+          onclick={onSignIn}
+          type="button"
+          class="bg-gradient-to-r from-indigo-200 to-indigo-100 border-indigo-600 text-indigo-700 text-sm px-4 py-1 rounded-full uppercase tracking-wide shadow shadow-indigo-600/50"
+        >
+          Sign in
+        </button>
+      </Match>
+    </Switch>
   );
 };
 
