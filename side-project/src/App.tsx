@@ -1,4 +1,4 @@
-import { createEffect } from "solid-js";
+import { createEffect, onMount } from "solid-js";
 import { useStore } from "./store";
 import { useSupabase } from "./supabase";
 import { Routes, Route, A, useNavigate } from "@solidjs/router";
@@ -14,26 +14,42 @@ function App() {
       <Route path="/" component={Index} />
       <Route path="/add" component={AddIngredient} />
       <Route path="/ingredient" component={Ingredient} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/signin" component={SignIn} />
-      <Route path="/reset" component={ResetPassword} />
     </Routes>
   );
 }
+
+const ButtonSignInOut = () => {
+  const supabase = useSupabase();
+
+  onMount(async () => {
+    console.log(await supabase.auth.getUser());
+  });
+
+  supabase.auth.onAuthStateChange((ev, session) => {
+    console.log({ ev, session });
+  });
+
+  const onSignOut = async () => {
+    console.log(await supabase.auth.signOut());
+  };
+
+  return (
+    <button
+      onclick={onSignOut}
+      type="button"
+      class="bg-gradient-to-r from-indigo-200 to-indigo-100 border-indigo-600 text-indigo-700 text-sm px-4 py-1 rounded-full uppercase tracking-wide shadow shadow-indigo-600/50"
+    >
+      Sign out
+    </button>
+  );
+};
 
 const Index = () => {
   return (
     <div class="bg-gray-50 h-screen">
       <div class="h-2/3 bg-gray-100 bg-[url('https://source.unsplash.com/wtevVfGYwnM')]">
         <div class="flex flex-row justify-end pt-4 pr-4 items-center">
-          <A href="/signup">
-            <button
-              type="button"
-              class="bg-gradient-to-r from-indigo-200 to-indigo-100 border-indigo-600 text-indigo-700 text-sm px-4 py-1 rounded-full uppercase tracking-wide shadow shadow-indigo-600/50"
-            >
-              Sign up
-            </button>
-          </A>
+          <ButtonSignInOut />
         </div>
       </div>
       <header>
