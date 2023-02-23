@@ -1,17 +1,21 @@
 import { useParams } from "@solidjs/router";
-import { createSignal, For, onMount } from "solid-js";
+import { createSignal, For, onMount, Show } from "solid-js";
 import { useSupabase } from "./supabase";
 import showdown from "showdown";
+import type { Component } from "solid-js";
 
 interface Article {
   title: string;
   description: string;
 }
 
+type Mode = "reading" | "editing";
+
 export function Post() {
   const params = useParams();
   const supabase = useSupabase();
   const [articles, setArticles] = createSignal<Article[]>([]);
+  const [mode, setMode] = createSignal<Mode>("reading");
 
   onMount(async () => {
     const { data, error } = await supabase
@@ -35,19 +39,46 @@ export function Post() {
     console.log({ data, error });
   });
 
+  const onEdit = () => {
+    if (mode() == "reading") {
+      setMode("editing");
+    } else if (mode() == "editing") {
+      setMode("reading");
+    }
+  };
+
   return (
     <div class="bg-gray-800 text-white h-screen">
       <For each={articles()}>
         {(article) => (
           <article class="mx-auto max-w-lg pt-12 px-2 flex flex-col gap-8">
-            <header class="text-xl uppercase tracking-wide text-pink-500">
-              {article.title}
-            </header>
-            <div class="prose prose-invert">
-              {document
-                .createRange()
-                .createContextualFragment(article.description)}
+            <div class="flex flex-row justify-between">
+              <header class="text-xl uppercase tracking-wide text-pink-500">
+                {article.title}
+              </header>
+              <button
+                type="button"
+                class="text-sm font-semibold bg-pink-500 text-white py-2 px-4 rounded shadow"
+                onclick={onEdit}
+              >
+                {mode() === "reading" ? "Edit" : "Save"}
+              </button>
             </div>
+            <Show
+              when={mode() == "reading"}
+              fallback={
+                <EditPost
+                  title={article.title}
+                  description={article.description}
+                />
+              }
+            >
+              <div class="prose prose-invert">
+                {document
+                  .createRange()
+                  .createContextualFragment(article.description)}
+              </div>
+            </Show>
           </article>
         )}
       </For>
@@ -56,8 +87,14 @@ export function Post() {
 }
 
 export function NewPost() {
-  const [title, setTitle] = createSignal("");
-  const [description, setDescription] = createSignal("");
+  return <EditPost title="" description="" />;
+}
+
+export const EditPost: Component<{ title: string; description: string }> = (
+  props
+) => {
+  const [title, setTitle] = createSignal(props.title || "");
+  const [description, setDescription] = createSignal(props.description || "");
   const supabase = useSupabase();
   const onSubmit = async () => {
     // Support Markdown
@@ -86,6 +123,7 @@ export function NewPost() {
             id="title"
             type="text"
             class="bg-gray-700 rounded-md"
+            value={title()}
             oninput={(ev) => setTitle(ev.currentTarget.value)}
           />
         </div>
@@ -94,6 +132,7 @@ export function NewPost() {
           <textarea
             id="description"
             class="bg-gray-700 resize-y rounded-md"
+            value={description()}
             oninput={(ev) => setDescription(ev.currentTarget.value)}
           />
         </div>
@@ -110,7 +149,7 @@ export function NewPost() {
       </form>
     </div>
   );
-}
+};
 
 export default function Blog() {
   return <div>Blog</div>;
