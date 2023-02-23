@@ -5,10 +5,12 @@ specifiers:
   '@solidjs/router': ^0.7.0
   '@supabase/supabase-js': ^2.8.0
   '@tailwindcss/forms': ^0.5.3
+  '@types/showdown': ^2.0.0
   '@vercel/node': ^2.9.7
   autoprefixer: ^10.4.13
   babel-preset-solid: ^1.6.10
   postcss: ^8.4.21
+  showdown: ^2.1.0
   solid-icons: ^1.0.4
   solid-js: ^1.6.11
   supabase: ^1.38.6
@@ -20,6 +22,7 @@ specifiers:
 dependencies:
   '@solidjs/router': 0.7.0_solid-js@1.6.11
   '@supabase/supabase-js': 2.8.0
+  showdown: 2.1.0
   solid-icons: 1.0.4_solid-js@1.6.11
   solid-js: 1.6.11
   typescript: 4.9.5
@@ -28,6 +31,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.20.12
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
+  '@types/showdown': 2.0.0
   '@vercel/node': 2.9.7
   autoprefixer: 10.4.13_postcss@8.4.21
   babel-preset-solid: 1.6.10_@babel+core@7.20.12
@@ -726,6 +730,10 @@ packages:
     resolution: {integrity: sha512-1eWWT19k0L4ZiTvdXjAvJ9KvW0B8SdiVftQmFPJGTEx78Q4PCSIQDpz+EfkFVR1N4U9gREjlW4JXL8YCIlY0bw==}
     dev: false
 
+  /@types/showdown/2.0.0:
+    resolution: {integrity: sha512-70xBJoLv+oXjB5PhtA8vo7erjLDp9/qqI63SRHm4REKrwuPOLs8HhXwlZJBJaB4kC18cCZ1UUZ6Fb/PLFW4TCA==}
+    dev: true
+
   /@vercel/build-utils/6.3.1:
     resolution: {integrity: sha512-mFd6QZJX1SaweTa9BB+zO6OyGeQWsk+z0LFhsSblnWue2wjmeZ3z3TBt8V/Wlae5NMg4+E2AFcDf/lr3ENeCfg==}
     dev: true
@@ -974,6 +982,11 @@ packages:
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: true
+
+  /commander/9.5.0:
+    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
+    engines: {node: ^12.20.0 || >=14}
+    dev: false
 
   /concat-map/0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -1876,6 +1889,13 @@ packages:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
     dev: true
+
+  /showdown/2.1.0:
+    resolution: {integrity: sha512-/6NVYu4U819R2pUIk79n67SYgJHWCce0a5xTP979WbNp0FL9MN1I1QK662IDU1b6JzKTvmhgI7T7JYIxBi3kMQ==}
+    hasBin: true
+    dependencies:
+      commander: 9.5.0
+    dev: false
 
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}

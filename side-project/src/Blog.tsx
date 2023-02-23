@@ -1,6 +1,7 @@
 import { useParams } from "@solidjs/router";
 import { createSignal } from "solid-js";
 import { useSupabase } from "./supabase";
+import showdown from "showdown";
 
 export function Post() {
   const params = useParams();
@@ -20,10 +21,15 @@ export function NewPost() {
   const [description, setDescription] = createSignal("");
   const supabase = useSupabase();
   const onSubmit = async () => {
+    // Support Markdown
+    const converter = new showdown.Converter();
+    const html = converter.makeHtml(description());
+
+    // Send blog post to supabase
     await supabase.from("feed").insert([
       {
         title: title(),
-        description: description(),
+        description: html,
       },
     ]);
   };
