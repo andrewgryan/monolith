@@ -3,6 +3,7 @@ import { useStore } from "./store";
 import { useSupabase } from "./supabase";
 import { Routes, Route, A, useNavigate } from "@solidjs/router";
 import { ImSpoonKnife } from "solid-icons/im";
+import NewRecipe from "./NewRecipe";
 import Ingredient from "./Ingredient";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <Routes>
       <Route path="/" component={Index} />
       <Route path="/add" component={AddIngredient} />
+      <Route path="/recipe" component={NewRecipe} />
       <Route path="/ingredient" component={Ingredient} />
     </Routes>
   );
