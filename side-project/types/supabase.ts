@@ -23,6 +23,26 @@ export interface Database {
           name?: string
         }
       }
+      feed: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: number
+          title: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          title?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          title?: string | null
+        }
+      }
       ingredients: {
         Row: {
           created_at: string | null
