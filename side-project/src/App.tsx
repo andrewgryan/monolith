@@ -4,6 +4,7 @@ import { useSupabase } from "./supabase";
 import { Routes, Route, A, useNavigate } from "@solidjs/router";
 import { ImSpoonKnife } from "solid-icons/im";
 import NewRecipe from "./NewRecipe";
+import Blog, { Post } from "./Blog";
 import Ingredient from "./Ingredient";
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
       <Route path="/add" component={AddIngredient} />
       <Route path="/recipe" component={NewRecipe} />
       <Route path="/ingredient" component={Ingredient} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:id" component={Post} />
     </Routes>
   );
 }
