@@ -5,7 +5,7 @@ import App from "./App";
 import { Store } from "./store";
 import { Supabase } from "./supabase";
 
-// Solid app
+// Solid app deployed on Vercel with Supabase backend
 let el = document.getElementById("app");
 if (el != null) {
   render(
