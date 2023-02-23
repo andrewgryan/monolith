@@ -28,18 +28,21 @@ export interface Database {
           created_at: string | null
           description: string | null
           id: number
+          raw_description: string
           title: string | null
         }
         Insert: {
           created_at?: string | null
           description?: string | null
           id?: number
+          raw_description?: string
           title?: string | null
         }
         Update: {
           created_at?: string | null
           description?: string | null
           id?: number
+          raw_description?: string
           title?: string | null
         }
       }
