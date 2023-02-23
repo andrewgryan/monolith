@@ -1,7 +1,19 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import RSS from "rss";
+import { createClient } from "@supabase/supabase-js";
 
 export default function (req: VercelRequest, res: VercelResponse) {
+  // Create supabase client
+  const supabaseUrl = process.env.VITE_SUPABASE_URL;
+  const supabaseKey = process.env.VITE_SUPABASE_KEY;
+  if (
+    typeof supabaseUrl !== "undefined" &&
+    typeof supabaseKey !== "undefined"
+  ) {
+    const client = createClient(supabaseUrl, supabaseKey);
+    console.log(client);
+  }
+
   // Make an RSS data structure
   const feed = new RSS({
     title: "Recipes in the key of code",
