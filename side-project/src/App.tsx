@@ -7,6 +7,7 @@ import NewRecipe from "./NewRecipe";
 import Blog, { Post } from "./Blog";
 import Ingredient from "./Ingredient";
 
+// Application
 function App() {
   return (
     <Routes>
