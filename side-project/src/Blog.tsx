@@ -1,17 +1,56 @@
 import { useParams } from "@solidjs/router";
-import { createSignal } from "solid-js";
+import { createSignal, For, onMount } from "solid-js";
 import { useSupabase } from "./supabase";
 import showdown from "showdown";
 
+interface Article {
+  title: string;
+  description: string;
+}
+
 export function Post() {
   const params = useParams();
+  const supabase = useSupabase();
+  const [articles, setArticles] = createSignal<Article[]>([]);
+
+  onMount(async () => {
+    const { data, error } = await supabase
+      .from("feed")
+      .select()
+      .eq("id", params.id);
+    if (data !== null) {
+      let articles: Article[] = data.map((item) => {
+        let title = item.title;
+        if (title == null) {
+          title = "";
+        }
+        let description = item.description;
+        if (description == null) {
+          description = "";
+        }
+        return { title, description };
+      });
+      setArticles(() => articles);
+    }
+    console.log({ data, error });
+  });
+
   return (
     <div class="bg-gray-800 text-white h-screen">
-      <article class="mx-auto max-w-lg pt-12 px-2">
-        <header class="text-xl uppercase tracking-wide text-pink-500">
-          Post: {params.id}
-        </header>
-      </article>
+      <For each={articles()}>
+        {(article) => (
+          <article class="mx-auto max-w-lg pt-12 px-2 flex flex-col gap-8">
+            <header class="text-xl uppercase tracking-wide text-pink-500">
+              {article.title}
+            </header>
+            <div class="prose prose-invert">
+              {document
+                .createRange()
+                .createContextualFragment(article.description)}
+            </div>
+          </article>
+        )}
+      </For>
     </div>
   );
 }
