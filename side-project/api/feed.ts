@@ -5,12 +5,12 @@ import { createClient } from "@supabase/supabase-js";
 export default async function (req: VercelRequest, res: VercelResponse) {
   // Make an RSS data structure
   const feed = new RSS({
-    title: "Recipes in the key of code",
+    title: "Andrew Ryan",
     description: "Code, food, travel, life.",
     feed_url: "https://monolith-ashen.vercel.app/feed.xml",
     site_url: "https://monolith-ashen.vercel.app/blog",
     language: "en-us",
-    pubDate: "Thu, 23 Feb 2023 08:38:51 GMT",
+    pubDate: new Date(),
   });
 
   // Create supabase client
