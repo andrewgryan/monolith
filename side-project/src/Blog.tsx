@@ -1,9 +1,16 @@
-import { useParams } from "@solidjs/router";
+import { A, useParams } from "@solidjs/router";
 import { createEffect, createSignal, For, onMount, Show } from "solid-js";
 import { useSupabase } from "./supabase";
 import showdown from "showdown";
 
 interface Article {
+  title: string;
+  description: string;
+  raw_description: string;
+}
+
+interface FullArticle {
+  id: number;
   title: string;
   description: string;
   raw_description: string;
@@ -72,7 +79,16 @@ export function Post() {
   };
 
   return (
-    <div class="bg-gray-800 text-white h-screen">
+    <div class="bg-gray-800 text-white min-h-screen">
+      <div class="mx-auto max-w-lg">
+        <div class="p-2">
+          <A href="/blog">
+            <button class="bg-pink-500 text-white rounded px-4 py-2 font-bold shadow shadow-pink-500/50">
+              Home
+            </button>
+          </A>
+        </div>
+      </div>
       <For each={articles()}>
         {(article) => (
           <article class="mx-auto max-w-lg pt-12 px-2 flex flex-col gap-8">
@@ -190,5 +206,51 @@ export function NewPost() {
 }
 
 export default function Blog() {
-  return <div>Blog</div>;
+  const supabase = useSupabase();
+  const [articles, setArticles] = createSignal<FullArticle[]>([]);
+  onMount(async () => {
+    const { data } = await supabase.from("feed").select();
+    if (data != null) {
+      let articles: FullArticle[] = data.map((item) => {
+        let id = item.id;
+        if (id == null) {
+          id = -1;
+        }
+        let title = item.title;
+        if (title == null) {
+          title = "";
+        }
+        let description = item.description;
+        if (description == null) {
+          description = "";
+        }
+        let raw_description = item.raw_description;
+        if (raw_description == null) {
+          raw_description = "";
+        }
+        return { id, title, raw_description, description };
+      });
+      setArticles(() => articles);
+    }
+  });
+  return (
+    <div class="bg-gray-800 h-screen text-white">
+      <div class="w-2/3 mx-auto">
+        <header>
+          <h1 class="font-bold text-8xl tracking-wide text-pink-500">Blog</h1>
+        </header>
+        <For each={articles()}>
+          {(article) => (
+            <div>
+              <A href={`/blog/${article.id}`}>
+                <h2 class="font-semibold text-xl cursor-pointer hover:text-pink-500 text-blue-500">
+                  {article.title}
+                </h2>
+              </A>
+            </div>
+          )}
+        </For>
+      </div>
+    </div>
+  );
 }
