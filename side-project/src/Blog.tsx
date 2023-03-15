@@ -14,6 +14,7 @@ interface FullArticle {
   title: string;
   description: string;
   raw_description: string;
+  created_at: Date | null;
 }
 
 type Mode = "reading" | "editing";
@@ -228,28 +229,47 @@ export default function Blog() {
         if (raw_description == null) {
           raw_description = "";
         }
-        return { id, title, raw_description, description };
+        let created_at = null;
+        if (item.created_at !== null) {
+          created_at = new Date(item.created_at);
+        }
+        return {
+          id,
+          title,
+          raw_description,
+          description,
+          created_at,
+        };
       });
       setArticles(() => articles);
     }
   });
   return (
     <div class="bg-gray-800 h-screen text-white">
-      <div class="w-2/3 mx-auto">
+      <div class="md:w-2/3 md:mx-auto px-2">
         <header>
           <h1 class="font-bold text-8xl tracking-wide text-pink-500">Blog</h1>
         </header>
-        <For each={articles()}>
-          {(article) => (
-            <div>
-              <A href={`/blog/${article.id}`}>
-                <h2 class="font-semibold text-xl cursor-pointer hover:text-pink-500 text-blue-500">
-                  {article.title}
-                </h2>
-              </A>
-            </div>
-          )}
-        </For>
+        <div class="mt-12">
+          <For
+            each={articles()
+              .filter((a) => a.created_at !== null)
+              .sort((a, b) => b.created_at - a.created_at)}
+          >
+            {(article) => (
+              <div class="flex flex-row justify-between">
+                <A href={`/blog/${article.id}`}>
+                  <h2 class="font-semibold text-xl cursor-pointer hover:text-pink-500 text-blue-500">
+                    {article.title}
+                  </h2>
+                </A>
+                <p class="text-sm text-gray-400">
+                  {article.created_at?.toLocaleString()}
+                </p>
+              </div>
+            )}
+          </For>
+        </div>
       </div>
     </div>
   );
