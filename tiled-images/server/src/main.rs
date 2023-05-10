@@ -1,5 +1,6 @@
 use actix_cors::Cors;
 use actix_web::{get, http, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
+use image::GenericImageView;
 use std::io::Cursor;
 
 struct AppState {
@@ -26,12 +27,12 @@ async fn cat(req: HttpRequest) -> impl Responder {
     // Crop image
     let i: u32 = x * n;
     let j: u32 = y * n;
-    let dynamic_image = image::open(format!("{}.jpg", z))
-        .expect("")
-        .crop_imm(i, j, n, n);
+
+    let dynamic_image = image::open(format!("{}.jpg", z)).expect("");
 
     let mut body: Vec<u8> = Vec::new();
     dynamic_image
+        .crop_imm(i, j, n, n)
         .write_to(
             &mut Cursor::new(&mut body),
             image::ImageOutputFormat::from(image::ImageFormat::Jpeg),
