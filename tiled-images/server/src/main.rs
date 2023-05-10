@@ -7,27 +7,28 @@ struct AppState {
 }
 
 #[get("/{z}/{x}/{y}.jpg")]
-async fn cat(req: HttpRequest, data: web::Data<AppState>) -> impl Responder {
+async fn cat(req: HttpRequest) -> impl Responder {
     // Parse URL
     let z: u32 = req.match_info().get("z").unwrap().parse().unwrap();
     let x: u32 = req.match_info().get("x").unwrap().parse().unwrap();
     let y: u32 = req.match_info().get("y").unwrap().parse().unwrap();
 
-    // Estimate crop location
-    let xp: u32;
-    let yp: u32;
-    if z > 1 {
-        xp = x / (u32::pow(2, z - 1));
-        yp = y / (u32::pow(2, z - 1));
-    } else {
-        xp = x;
-        yp = y;
+    // 404 greater than z=1
+    if z > 6 {
+        return HttpResponse::NotFound()
+            .content_type("text/plain")
+            .body("These are not the droids you were looking for...");
     }
-    let i: u32 = xp * 32;
-    let j: u32 = yp * 32;
+
+    // Estimate crop location
+    let n: u32 = 64;
 
     // Crop image
-    let dynamic_image = data.dynamic_image.crop_imm(i, j, 32, 32);
+    let i: u32 = x * n;
+    let j: u32 = y * n;
+    let dynamic_image = image::open(format!("{}.jpg", z))
+        .expect("")
+        .crop_imm(i, j, n, n);
 
     let mut body: Vec<u8> = Vec::new();
     dynamic_image
