@@ -15,14 +15,14 @@ async fn cat(req: HttpRequest) -> impl Responder {
     let y: u32 = req.match_info().get("y").unwrap().parse().unwrap();
 
     // 404 greater than z=1
-    if z > 6 {
+    if z > 5 {
         return HttpResponse::NotFound()
             .content_type("text/plain")
             .body("These are not the droids you were looking for...");
     }
 
     // Estimate crop location
-    let n: u32 = 64;
+    let n: u32 = 256;
 
     // Crop image
     let i: u32 = x * n;
