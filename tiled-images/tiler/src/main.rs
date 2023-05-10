@@ -3,7 +3,7 @@ use image::imageops::FilterType::Triangle;
 
 fn main() {
     println!("Resize image");
-    let img = image::open("../server/cat.jpg").unwrap();
+    let img = image::open("../fantasy-square.jpg").unwrap();
     let n: u32 = 256;
     for z in 0..6 {
         let tile = img.resize_to_fill(n * u32::pow(2, z), n * u32::pow(2, z), Triangle);
