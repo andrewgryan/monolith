@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "typedimages"
+version = "0.1.0"
+
+[project.scripts]
+typedimages = "typedimages.__main__:app"
+

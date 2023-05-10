@@ -1,0 +1,1 @@
+{"title": "Image", "type": "object", "properties": {"src": {"title": "Src", "type": "string"}, "author": {"title": "Author", "type": "string"}}, "required": ["src", "author"]}

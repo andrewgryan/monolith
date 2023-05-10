@@ -1,0 +1,19 @@
+{
+  "name": "typed-images",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.0.4",
+    "vite": "^4.3.3"
+  },
+  "dependencies": {
+    "zod": "^3.21.4"
+  }
+}
