@@ -1,7 +1,7 @@
 use actix_cors::Cors;
 use actix_web::{get, http, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
 
-#[get("/{z}/{x}/{y}.jpg")]
+#[get("/{z}/{x}/{y}.png")]
 async fn cat(req: HttpRequest) -> impl Responder {
     // Parse URL
     let z: u32 = req.match_info().get("z").unwrap().parse().unwrap();
@@ -15,13 +15,13 @@ async fn cat(req: HttpRequest) -> impl Responder {
             .body("These are not the droids you were looking for...");
     }
 
-    let file_name = format!("tiles/{}-{}-{}.jpg", z, x, y);
+    let file_name = format!("tiles/{}-{}-{}.png", z, x, y);
     let body: Vec<u8> = web::block(|| std::fs::read(file_name))
         .await
         .unwrap()
         .unwrap();
 
-    HttpResponse::Ok().content_type("image/jpeg").body(body)
+    HttpResponse::Ok().content_type("image/png").body(body)
 }
 
 #[actix_web::main]

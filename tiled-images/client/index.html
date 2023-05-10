@@ -21,7 +21,7 @@
       }
       #map {
         height: 100vh;
-        background: black;
+        background: #212529;
       }
     </style>
   </head>
@@ -32,7 +32,7 @@
     <script type="module">
       var map = L.map("map").setView([51.505, -0.09], 3);
 
-      L.tileLayer("http://localhost:8080/{z}/{x}/{y}.jpg", {
+      L.tileLayer("http://localhost:8080/{z}/{x}/{y}.png", {
         attribution: "Hi-res tiling service",
       }).addTo(map);
     </script>
