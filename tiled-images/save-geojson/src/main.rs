@@ -3,7 +3,7 @@ use geojson::GeoJson;
 
 #[get("/polygons")]
 async fn save_get() -> Result<impl Responder> {
-    let body: String = web::block(|| std::fs::read_to_string("save.json"))
+    let body: String = web::block(|| std::fs::read_to_string("post.json"))
         .await
         .unwrap()
         .unwrap();

@@ -23,6 +23,52 @@
       #map {
         height: 100vh;
         background: #212529;
+        isolation: isolate;
+      }
+
+      /* File input */
+      input[type="file"] {
+        opacity: 0; /* make transparent */
+        z-index: -1; /* move under anything else */
+        position: absolute; /* don't let it take up space */
+      }
+
+      .label {
+        display: flex;
+        background: white;
+        border-radius: 0.25rem;
+        margin-block: 0.25rem;
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+        font-family: sans-serif;
+        font-size: 0.95em;
+        cursor: pointer;
+
+      }
+
+      .label > * + * {
+        margin-left: 0.5rem;
+      }
+
+      /* Atomic CSS */
+      .absolute {
+        position: absolute;
+      }
+
+      .top-0 {
+        top: 0;
+      }
+
+      .right-0 {
+        right: 0;
+      }
+
+      .p-2 {
+        padding: 0.5rem;
+      }
+
+      .m-2 {
+        margin: 0.5rem;
       }
     </style>
 
@@ -35,12 +81,43 @@
 
   <body>
     <div id="map"></div>
+    <div class="absolute top-0 right-0 p-2">
+      <input id="upload" type="file"></input>
+          <label for="upload" class="label">
+            <p>Upload</p>
+            <sl-icon slot="suffix" name="file-earmark-arrow-up"></sl-icon>
+          </label>
+      <sl-button-group>
+        <sl-button id="btn-upload">
+          <sl-icon slot="suffix" name="file-earmark-arrow-up"></sl-icon>
+          Upload
+        </sl-button>
+
+        <sl-button id="btn">
+          <sl-icon slot="suffix" name="file-earmark-arrow-down"></sl-icon>
+          Download
+        </sl-button>
+      </sl-button-group>
+    </div>
+
+    <script type="module">
+      import "@shoelace-style/shoelace/dist/themes/light.css";
+      import "@shoelace-style/shoelace/dist/components/button/button.js";
+      import "@shoelace-style/shoelace/dist/components/button-group/button-group.js";
+      import "@shoelace-style/shoelace/dist/components/icon/icon.js";
+      import "@shoelace-style/shoelace/dist/components/input/input.js";
+      import "@shoelace-style/shoelace/dist/components/rating/rating.js";
+
+      // <sl-button>, <sl-icon>, <sl-input>, and <sl-rating> are ready to use!
+
+      import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path.js";
+      setBasePath("node_modules/@shoelace-style/shoelace/dist");
+    </script>
 
     <script type="module">
       import "leaflet-draw";
-      window.L = L;
 
-      var map = L.map("map").setView([51.505, -0.09], 3);
+      var map = L.map("map").setView([0, 0], 3);
 
       L.tileLayer("http://localhost:8080/{z}/{x}/{y}.png", {
         attribution: "Hi-res tiling service",
@@ -54,12 +131,30 @@
         edit: {
           featureGroup: drawnItems,
         },
+        draw: {
+          rectangle: { showArea: false },
+        },
       });
       map.addControl(drawControl);
 
       map.on(L.Draw.Event.CREATED, function (event) {
-        console.log(event.layer.toGeoJSON());
-        drawnItems.addLayer(event.layer);
+        if (event.layerType === "polygon" || event.layerType === "rectangle") {
+          drawnItems.addLayer(event.layer);
+        }
+      });
+
+      // File save icon
+      document.getElementById("btn").addEventListener("click", () => {
+        const data = { Hello: "World!" };
+        const fileName = "fantasy.json";
+
+        // Gist to trigger download in client
+        const blob = new Blob([JSON.stringify(data)]);
+        const a = document.createElement("a");
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.dataset.downloadurl = ["text/obj", a.download, a.href].join(":");
+        a.click();
       });
     </script>
   </body>

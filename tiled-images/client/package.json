@@ -13,6 +13,7 @@
     "vite": "^4.3.5"
   },
   "dependencies": {
+    "@shoelace-style/shoelace": "^2.4.0",
     "leaflet-draw": "^1.0.4"
   }
 }
